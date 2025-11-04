@@ -1,6 +1,6 @@
-namespace Hypesoft.Domain;
+namespace Domain.Entities;
 
-public class Product
+public class Product 
 {
     public enum ProductCategory
     {
@@ -13,6 +13,7 @@ public class Product
     private decimal price;
     private int amountInStock;
     private ProductCategory category;
+    public string? Id { get; private set; }
 
     public Product(string name, string description, decimal price, ProductCategory category, int amountInStock)
     {
