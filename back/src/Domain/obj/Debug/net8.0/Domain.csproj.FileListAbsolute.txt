@@ -1,0 +1,12 @@
+C:\Users\João\hypesoft-challenge\back\src\Domain\bin\Debug\net8.0\Domain.deps.json
+C:\Users\João\hypesoft-challenge\back\src\Domain\bin\Debug\net8.0\Domain.dll
+C:\Users\João\hypesoft-challenge\back\src\Domain\bin\Debug\net8.0\Domain.pdb
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\Domain.AssemblyInfoInputs.cache
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\Domain.AssemblyInfo.cs
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\Domain.csproj.CoreCompileInputs.cache
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\Domain.sourcelink.json
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\Domain.dll
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\refint\Domain.dll
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\Domain.pdb
+C:\Users\João\hypesoft-challenge\back\src\Domain\obj\Debug\net8.0\ref\Domain.dll
