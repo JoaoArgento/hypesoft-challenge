@@ -19,7 +19,7 @@ public class MongoDBContext : DbContext
 
         this.collectionName = collectionName;
 
-        string? connection = configuration.GetConnectionString("MongoDb");
+        string? connection = Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING");
         string? databaseName = configuration["DatabaseSettings:DatabaseName"];
 
         if (string.IsNullOrEmpty(connection))

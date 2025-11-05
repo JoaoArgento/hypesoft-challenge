@@ -12,6 +12,8 @@ using Application.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
+DotNetEnv.Env.Load();
+
 builder.Host.UseSerilog((context, logger) =>
 {
     logger.ReadFrom.Configuration(context.Configuration).WriteTo.Console();
@@ -49,6 +51,8 @@ var app = builder.Build();
 
 app.UseRouting();
 app.MapControllers();
+
+
 app.Run();
 
 
