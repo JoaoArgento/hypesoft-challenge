@@ -1,8 +1,14 @@
 using MediatR;
 using Serilog;
+using Infrastructure.Data;
+using Infrastructure.Repositories;
+using API.Extensions;
+using Application.Mappings;
+using Microsoft.AspNetCore.Components.Forms.Mapping;
 using FluentValidation;
-using Infrastructure.Persistence;
-using Infrastructure.Extensions;
+using Application.Validators;
+using Application.Commands;
+using Application.Queries;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,20 +22,33 @@ builder.Services.AddControllers();
 
 builder.Services.AddInfra(builder.Configuration);
 builder.Services.AddMediatR(typeof(Application.Commands.AddProductCommand).Assembly);
+builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
+builder.Services.AddValidatorsFromAssemblyContaining<ProductCreationValidator>();
 
-
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+// app.MapPost("/products", async (AddProductCommand amd, IMediator mediator) =>
+// {
+//     var result = await mediator.Send(amd);
+//     return Results.Created($"/products/{result.Id}", result);
+// });
 
-app.UseHttpsRedirection();
+// app.MapGet("/products/{id:guid}", async (Guid id, IMediator mediator) =>
+// {
+//     var result = await mediator.Send(new FetchProductById(id));
 
+//     if (result is null)
+//     {
+//         return Results.NotFound();
+//     }
+//     return Results.Ok(result);
+// });
 
+app.UseRouting();
+app.MapControllers();
 app.Run();
 
 

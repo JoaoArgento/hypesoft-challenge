@@ -1,7 +1,8 @@
 using MediatR;
-using Application.Interfaces;
+using Domain.Repositories;
 using Application.Commands;
 using Domain.Entities;
+using Application.DTOs;
 
 namespace Application.Handlers
 {

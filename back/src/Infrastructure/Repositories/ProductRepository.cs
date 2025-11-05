@@ -1,27 +1,29 @@
 using System.Runtime.CompilerServices;
-using Application.Interfaces;
+using Domain.Repositories;
 using Domain.Entities;
 using MongoDB.Driver;
+using Infrastructure.Data;
+using Application.DTOs;
 
-namespace Infrastructure.Persistence;
+namespace Infrastructure.Repositories;
 
 public class ProductRepository : IStorableRepository<Product>
 {
-    private readonly MongoDBContext<Product> mongoDBContext;
+    private readonly MongoDBContext mongoDBContext;
     
-    public ProductRepository(MongoDBContext<Product> mongoDBContext)
+    public ProductRepository(MongoDBContext mongoDBContext)
     {
         this.mongoDBContext = mongoDBContext;
     }
 
-    public async Task AddAsync(Product storable)
+    public async Task AddAsync(Product dto)
     {
-        if (storable == null)
+        if (dto == null)
         {
             throw new NullReferenceException("Storable is null");
         }
 
-        await mongoDBContext.Storables.InsertOneAsync(storable);
+        await mongoDBContext.Storables.InsertOneAsync(dto);
     }
 
     public async Task DeleteByIdAsync(Guid id)

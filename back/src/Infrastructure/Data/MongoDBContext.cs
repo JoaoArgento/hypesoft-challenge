@@ -1,10 +1,11 @@
+using Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
-namespace Infrastructure.Persistence;
+namespace Infrastructure.Data;
 
-public class MongoDBContext<T> : DbContext
+public class MongoDBContext : DbContext
 {
     private IMongoDatabase database;
     private string collectionName;
@@ -33,7 +34,22 @@ public class MongoDBContext<T> : DbContext
 
         MongoClient client = new MongoClient(connection);
         database = client.GetDatabase(databaseName);
+
+    } 
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<Product>(product =>
+        {
+            product.HasKey(p => p.Id);
+            product.Property(p => p.Name).IsRequired(true);
+            product.Property(p => p.Description).IsRequired(false);
+            product.Property(p => p.Category).IsRequired(true);
+            product.Property(p => p.Price).HasPrecision(18, 2);
+            product.Property(p => p.AmountInStock);
+        });
     }
 
-    public IMongoCollection<T> Storables => database.GetCollection<T>(collectionName);
+    public IMongoCollection<Product> Storables => database.GetCollection<Product>(collectionName);
 }
