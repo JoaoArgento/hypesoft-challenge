@@ -13,17 +13,32 @@ public class Product
     private decimal price;
     private int amountInStock;
     private ProductCategory category;
-    public string? Id { get; private set; }
+    public Guid? Id { get; private set; }
 
-    public Product(string name, string description, decimal price, ProductCategory category, int amountInStock)
+    public Product(Guid id, string name, string description, decimal price, int category, int amountInStock)
     {
+        this.Id = id;
         this.name = name;
         this.description = description;
         this.price = price;
-        this.category = category;
+        this.category = (ProductCategory)category;
         this.amountInStock = amountInStock;
     }
 
+    public void RaiseStock(int amount)
+    {
+        amountInStock += amount;
+    }
+
+    public void RemoveStock(int amount)
+    {
+        amountInStock -= amount;
+
+        if (amountInStock < 0)
+        {
+            amountInStock = 0;
+        }
+    }
     public void UpdatePrice(decimal newPrice)
     {
         this.price = newPrice;

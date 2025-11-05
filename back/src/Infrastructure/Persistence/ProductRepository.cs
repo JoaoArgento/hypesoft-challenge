@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Application.Interfaces;
 using Domain.Entities;
 using MongoDB.Driver;
@@ -23,9 +24,9 @@ public class ProductRepository : IStorableRepository<Product>
         await mongoDBContext.Storables.InsertOneAsync(storable);
     }
 
-    public async Task DeleteByIdAsync(string id)
+    public async Task DeleteByIdAsync(Guid id)
     {
-        if (string.IsNullOrEmpty(id) || string.IsNullOrWhiteSpace(id))
+        if (id == Guid.Empty)
         {
             throw new ArgumentNullException("id is not valid");
         }
@@ -38,9 +39,9 @@ public class ProductRepository : IStorableRepository<Product>
         return await mongoDBContext.Storables.Find(_ => true).ToListAsync();
     }
 
-    public async Task<Product> GetByIdAsync(string id)
+    public async Task<Product> GetByIdAsync(Guid id)
     {
-        if (string.IsNullOrEmpty(id) || string.IsNullOrWhiteSpace(id))
+        if (id == Guid.Empty)
         {
             throw new ArgumentNullException("id is not valid");
         }

@@ -1,9 +1,10 @@
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using MongoDB.Driver;
 
 namespace Infrastructure.Persistence;
 
-public class MongoDBContext<T> 
+public class MongoDBContext<T> : DbContext
 {
     private IMongoDatabase database;
     private string collectionName;
