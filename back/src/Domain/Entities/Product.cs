@@ -8,8 +8,8 @@ public class Product
         B,
         C
     }
-    public string Name { get; private set; }
-    public string Description { get; private set; }
+    public string ProductName { get; private set; } = null;
+    public string Description { get; private set; } = null;
     public decimal Price { get; private set; } 
     public int AmountInStock { get; private set; }
     public ProductCategory Category { get; private set; }
@@ -18,7 +18,7 @@ public class Product
     public Product(Guid id, string name, string description, decimal price, int category, int amountInStock)
     {
         this.Id = id;
-        this.Name = name;
+        this.ProductName = name;
         this.Description = description;
         this.Price = price;
         this.Category = (ProductCategory)category;

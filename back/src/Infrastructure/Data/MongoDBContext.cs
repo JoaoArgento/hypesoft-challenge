@@ -43,7 +43,7 @@ public class MongoDBContext : DbContext
         modelBuilder.Entity<Product>(product =>
         {
             product.HasKey(p => p.Id);
-            product.Property(p => p.Name).IsRequired(true);
+            product.Property(p => p.ProductName).IsRequired(true);
             product.Property(p => p.Description).IsRequired(false);
             product.Property(p => p.Category).IsRequired(true);
             product.Property(p => p.Price).HasPrecision(18, 2);

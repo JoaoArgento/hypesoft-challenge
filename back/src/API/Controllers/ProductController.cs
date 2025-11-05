@@ -19,12 +19,12 @@ public class ProductController : ControllerBase
         this.mediator = mediator;
     }
 
-    // [HttpGet]
-    // public async Task<IActionResult> GetAll()
-    // {
-    //     var products = mediator.Send(new Fec)
-    //     return Ok(products);
-    // }
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var products = await mediator.Send(new FetchAllProducts());
+        return Ok(products);
+    }
 
     [HttpGet("{id}")]
     public async Task<IActionResult> GetByIdAsync(Guid id)
