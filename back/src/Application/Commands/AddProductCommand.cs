@@ -4,5 +4,5 @@ using MediatR;
 
 namespace Application.Commands
 {
-    public record AddProductCommand(Guid Id, string Name, string Description, decimal Price, int Category, int AmountInStock) : IRequest<ProductDTO>;
+    public record AddProductCommand(string Name, string Description, decimal Price, string Category, int AmountInStock) : IRequest<ProductDTO>;
 }

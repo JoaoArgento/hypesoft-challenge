@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import { useProducts, useCreateProduct, useDeleteProduct, useUpdateProduct, useUpdateStock} from "../hooks/useProducts";
 import { ProductForm } from "../components/forms/ProductForm";
-import { useQuery } from "@tanstack/react-query";
+// import { useQuery } from "@tanstack/react-query";
 import type { ProductDTO } from "../types/product";
 
 
@@ -15,7 +15,7 @@ export default function Products()
     const remove = useDeleteProduct();
     const updateStock = useUpdateStock();
 
-    const lowStockProducts = products.filter((p: any) => p.amountInStock < 10);
+    // const lowStockProducts = products.filter((p: any) => p.amountInStock < 10);
 
     return(
         <div>
@@ -30,7 +30,7 @@ export default function Products()
             </div>
             <h2>Lista de produtos</h2>
             <ul>
-                {products.map((p: ProductDTO) =>
+                {Array.isArray(products) && products.map((p: ProductDTO) =>
                 {
                     return <li key = {p._id}>
                         <div>
@@ -55,7 +55,9 @@ export default function Products()
             </ul>
 
             <h2>Criar produto</h2>
-            <ProductForm onSubmit={(v) => create.mutate(v)} />
+            <ProductForm defaultValues = {{name: "", price: 0, category: ""}}
+                        onSubmit={(productCreateDTO) => {console.log(productCreateDTO); create.mutate(productCreateDTO)}}
+                        submitLabel="Create" />
 
         </div>
     )

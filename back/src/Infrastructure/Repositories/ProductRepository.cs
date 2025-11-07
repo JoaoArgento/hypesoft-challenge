@@ -4,13 +4,20 @@ using Domain.Entities;
 using MongoDB.Driver;
 using Infrastructure.Data;
 using Application.DTOs;
+using SharpCompress.Common;
 
 namespace Infrastructure.Repositories;
+
+public class Counter
+{
+    public string ? Id { get; set; }
+    public int SequenceValue { get; set; }
+}
 
 public class ProductRepository : IStorableRepository<Product>
 {
     private readonly MongoDBContext mongoDBContext;
-    
+
     public ProductRepository(MongoDBContext mongoDBContext)
     {
         this.mongoDBContext = mongoDBContext;
@@ -26,14 +33,14 @@ public class ProductRepository : IStorableRepository<Product>
         await mongoDBContext.Storables.InsertOneAsync(dto);
     }
 
-    public async Task DeleteByIdAsync(Guid id)
+    public async Task DeleteByIdAsync(int id)
     {
-        if (id == Guid.Empty)
+        if (id == -1)
         {
             throw new ArgumentNullException("id is not valid");
         }
         await mongoDBContext.Storables.DeleteOneAsync(product => product.Id == id);
-    
+
     }
 
     public async Task<IEnumerable<Product>> GetAllAsync()
@@ -41,9 +48,9 @@ public class ProductRepository : IStorableRepository<Product>
         return await mongoDBContext.Storables.Find(_ => true).ToListAsync();
     }
 
-    public async Task<Product> GetByIdAsync(Guid id)
+    public async Task<Product> GetByIdAsync(int id)
     {
-        if (id == Guid.Empty)
+        if (id == -1)
         {
             throw new ArgumentNullException("id is not valid");
         }
@@ -52,10 +59,26 @@ public class ProductRepository : IStorableRepository<Product>
 
     public async Task UpdateAsync(Product storableParam)
     {
-         if (storableParam == null)
+        if (storableParam == null)
         {
             throw new NullReferenceException("Storable is null");
         }
         await mongoDBContext.Storables.ReplaceOneAsync(storable => storable.Id == storableParam.Id, storableParam);
+    }
+
+    public async Task<int> GetNextIdAsync(string collectionName)
+    {
+        var counters = mongoDBContext.MongoDatabase.GetCollection<Counter>("counters");
+        var filter = Builders<Counter>.Filter.Eq(c => c.Id, collectionName);
+        var update = Builders<Counter>.Update.Inc(c => c.SequenceValue, 1);
+
+        var options = new FindOneAndUpdateOptions<Counter>
+        {
+            ReturnDocument = ReturnDocument.After,
+            IsUpsert = true,
+        };
+
+        var counter = await counters.FindOneAndUpdateAsync(filter, update, options);
+        return counter.SequenceValue; 
     }
 }

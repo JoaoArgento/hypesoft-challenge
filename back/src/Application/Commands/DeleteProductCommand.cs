@@ -2,5 +2,5 @@ using MediatR;
 
 namespace Application.Commands
 {
-    public record DeleteProductCommand(Guid ProductId) : IRequest<bool>;
+    public record DeleteProductCommand(int ProductId) : IRequest<bool>;
 }

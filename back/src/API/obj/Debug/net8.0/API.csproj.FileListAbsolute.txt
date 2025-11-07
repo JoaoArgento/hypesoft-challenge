@@ -61,7 +61,6 @@ C:\Users\João\hypesoft-challenge\back\src\API\obj\Debug\net8.0\API.AssemblyInfo
 C:\Users\João\hypesoft-challenge\back\src\API\obj\Debug\net8.0\API.csproj.CoreCompileInputs.cache
 C:\Users\João\hypesoft-challenge\back\src\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\João\hypesoft-challenge\back\src\API\obj\Debug\net8.0\API.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\João\hypesoft-challenge\back\src\API\obj\Debug\net8.0\API.sourcelink.json
 C:\Users\João\hypesoft-challenge\back\src\API\obj\Debug\net8.0\staticwebassets.build.json
 C:\Users\João\hypesoft-challenge\back\src\API\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\João\hypesoft-challenge\back\src\API\obj\Debug\net8.0\staticwebassets\msbuild.API.Microsoft.AspNetCore.StaticWebAssets.props
@@ -87,3 +86,5 @@ C:\Users\João\hypesoft-challenge\back\src\API\bin\Debug\net8.0\Microsoft.Extens
 C:\Users\João\hypesoft-challenge\back\src\API\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Physical.dll
 C:\Users\João\hypesoft-challenge\back\src\API\bin\Debug\net8.0\Microsoft.Extensions.FileSystemGlobbing.dll
 C:\Users\João\hypesoft-challenge\back\src\API\bin\Debug\net8.0\MongoDB.EntityFrameworkCore.dll
+C:\Users\João\hypesoft-challenge\back\src\API\bin\Debug\net8.0\DotNetEnv.dll
+C:\Users\João\hypesoft-challenge\back\src\API\bin\Debug\net8.0\Sprache.dll

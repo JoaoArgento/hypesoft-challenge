@@ -10,20 +10,30 @@ using Application.Validators;
 using Application.Commands;
 using Application.Queries;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
-DotNetEnv.Env.Load();
+DotNetEnv.Env.Load("./EnvironmentVariables.env");
+
 
 builder.Host.UseSerilog((context, logger) =>
 {
     logger.ReadFrom.Configuration(context.Configuration).WriteTo.Console();
+});
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll", policy =>
+    {
+        policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+    });
 });
 
 builder.Services.AddControllers();
 
 
 builder.Services.AddInfra(builder.Configuration);
-builder.Services.AddMediatR(typeof(Application.Commands.AddProductCommand).Assembly);
+builder.Services.AddMediatR(typeof(AddProductCommand).Assembly);
+
 builder.Services.AddAutoMapper(typeof(AutoMapperProfile).Assembly);
 builder.Services.AddValidatorsFromAssemblyContaining<ProductCreationValidator>();
 
@@ -32,26 +42,10 @@ builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// app.MapPost("/products", async (AddProductCommand amd, IMediator mediator) =>
-// {
-//     var result = await mediator.Send(amd);
-//     return Results.Created($"/products/{result.Id}", result);
-// });
-
-// app.MapGet("/products/{id:guid}", async (Guid id, IMediator mediator) =>
-// {
-//     var result = await mediator.Send(new FetchProductById(id));
-
-//     if (result is null)
-//     {
-//         return Results.NotFound();
-//     }
-//     return Results.Ok(result);
-// });
 
 app.UseRouting();
 app.MapControllers();
-
+app.UseCors("AllowAll");
 
 app.Run();
 

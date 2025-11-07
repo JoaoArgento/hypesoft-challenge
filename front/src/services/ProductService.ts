@@ -5,34 +5,34 @@ export const ProductService = {
     productList: async(params?: {search?:string; category?: string}) =>
     {
         const response = await API.get<ProductDTO[]>("/products", {params});
-        return response.data;
+        return response.data ?? [];
     },
 
-    getById: async(id: string) =>
+    getById: async(id: number) =>
     {
         const response = await API.get<ProductDTO>(`/products/${id}`);
         return response.data;
     },
 
-    create: async(payload: ProductDTO) =>
+    create: async(payload: ProductCreateDTO) =>
     {
-        const response = API.post<ProductDTO>("/products", payload);
-        return response;
+        const response = await API.post<ProductDTO>("/products", payload);
+        return response.data;
     },
 
-    update: async(id: string, payload: Partial<ProductCreateDTO>) =>
+    update: async(id: number, payload: Partial<ProductCreateDTO>) =>
     {
         const response = await API.put<ProductDTO>(`/products/${id}`,payload);
         return response.data;
     },
 
-    delete: async(id: string) => 
+    delete: async(id: number) => 
     {
         const response = await API.delete(`/products/${id}`);
         return response.data;
     },
 
-    updateStock: async (id: string, amount: number) =>
+    updateStock: async (id: number, amount: number) =>
     {
         const response = await API.patch<ProductDTO>(`/products/${id}/stock`, {amount});
         return response.data;

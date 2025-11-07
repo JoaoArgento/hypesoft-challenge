@@ -20,7 +20,10 @@ public class MongoDBContext : DbContext
         this.collectionName = collectionName;
 
         string? connection = Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING");
+
         string? databaseName = configuration["DatabaseSettings:DatabaseName"];
+
+        Console.WriteLine(connection);
 
         if (string.IsNullOrEmpty(connection))
         {
@@ -43,7 +46,7 @@ public class MongoDBContext : DbContext
         modelBuilder.Entity<Product>(product =>
         {
             product.HasKey(p => p.Id);
-            product.Property(p => p.ProductName).IsRequired(true);
+            product.Property(p => p.Name).IsRequired(true);
             product.Property(p => p.Description).IsRequired(false);
             product.Property(p => p.Category).IsRequired(true);
             product.Property(p => p.Price).HasPrecision(18, 2);
@@ -52,4 +55,5 @@ public class MongoDBContext : DbContext
     }
 
     public IMongoCollection<Product> Storables => database.GetCollection<Product>(collectionName);
+    public IMongoDatabase MongoDatabase => database;
 }

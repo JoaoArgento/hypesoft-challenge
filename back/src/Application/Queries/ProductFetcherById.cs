@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Application.Queries;
 
-public sealed record FetchProductById(Guid Id) : IRequest<ProductDTO>;
+public sealed record FetchProductById(int Id) : IRequest<ProductDTO>;

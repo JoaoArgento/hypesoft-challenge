@@ -5,6 +5,7 @@ using Domain.Repositories;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
+using Serilog;
 
 namespace API.Controllers;
 
@@ -27,7 +28,7 @@ public class ProductController : ControllerBase
     }
 
     [HttpGet("{id}")]
-    public async Task<IActionResult> GetByIdAsync(Guid id)
+    public async Task<IActionResult> GetByIdAsync(int id)
     {
         var product = await mediator.Send(new FetchProductById(id));
 
@@ -45,9 +46,9 @@ public class ProductController : ControllerBase
         var result = await mediator.Send(addProductCommand);
         return Ok(result);
     }
-
+  
     [HttpDelete]
-    public async Task<IActionResult> DeleteAsync(Guid id)
+    public async Task<IActionResult> DeleteAsync(int id)
     {
         var result = await mediator.Send(new DeleteProductCommand(id));
         return result ? NoContent() : NotFound();
