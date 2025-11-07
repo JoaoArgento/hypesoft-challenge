@@ -2,7 +2,7 @@ import {useQuery, useMutation, useQueryClient} from "@tanstack/react-query";
 import { ProductService } from "../services/ProductService";
 import type { ProductDTO, ProductCreateDTO } from "../types/product";
 
-export const useProducts = (params?: {search?:string; category?: number}) =>
+export const useProducts = (params?: {search?:string; category?: string}) =>
 {
     return useQuery({
         queryKey: ["products", params], 
@@ -24,7 +24,7 @@ export const useCreateProduct = () =>
     const queryClient = useQueryClient();
 
     return useMutation({
-        mutationFn: (p: ProductCreateDTO) => ProductService.create(p), 
+        mutationFn: (p: ProductDTO) => ProductService.create(p), 
         onSuccess: () => queryClient.invalidateQueries({queryKey: ["products"]})
     })
 };

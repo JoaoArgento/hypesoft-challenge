@@ -2,7 +2,7 @@ import { API } from "./APIClient";
 import type { ProductCreateDTO, ProductDTO } from "../types/product";
 
 export const ProductService = {
-    productList: async(params?: {search?:string; category?: number}) =>
+    productList: async(params?: {search?:string; category?: string}) =>
     {
         const response = await API.get<ProductDTO[]>("/products", {params});
         return response.data;
@@ -14,7 +14,7 @@ export const ProductService = {
         return response.data;
     },
 
-    create: async(payload: ProductCreateDTO) =>
+    create: async(payload: ProductDTO) =>
     {
         const response = API.post<ProductDTO>("/products", payload);
         return response;
