@@ -1,6 +1,6 @@
 namespace Domain.Entities;
 
-public class Product 
+public class Product
 {
     public enum ProductCategory
     {
@@ -10,7 +10,7 @@ public class Product
     }
     public string Name { get; private set; }
     public string Description { get; private set; }
-    public decimal Price { get; private set; } 
+    public decimal Price { get; private set; }
     public int AmountInStock { get; private set; }
     public string Category { get; private set; }
     public int Id { get; private set; }
@@ -24,19 +24,23 @@ public class Product
         this.Category = category;
         this.AmountInStock = amountInStock;
     }
-
-    public void RaiseStock(int amount)
+    public void UpdateStock(int amount)
     {
-        AmountInStock += amount;
+        this.AmountInStock = amount;
     }
 
-    public void RemoveStock(int amount)
-    {
-        AmountInStock -= amount;
+    // public void RaiseStock(int amount)
+    // {
+    //     AmountInStock += amount;
+    // }
 
-        if (AmountInStock < 0)
-        {
-            AmountInStock = 0;
-        }
-    }
+    // public void RemoveStock(int amount)
+    // {
+    //     AmountInStock -= amount;
+
+    //     if (AmountInStock < 0)
+    //     {
+    //         AmountInStock = 0;
+    //     }
+    // }
 } 

@@ -13,7 +13,6 @@ namespace API.Controllers;
 [Route("products")]
 public class ProductController : ControllerBase
 {
-    private IStorableRepository<Product> productRepository;
     private IMediator mediator;
     public ProductController(IMediator mediator)
     {
@@ -46,11 +45,21 @@ public class ProductController : ControllerBase
         var result = await mediator.Send(addProductCommand);
         return Ok(result);
     }
-  
-    [HttpDelete]
+
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
         var result = await mediator.Send(new DeleteProductCommand(id));
         return result ? NoContent() : NotFound();
+    }
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> UpdateStockAsync(int id, [FromBody] UpdateStockCommand usc)
+    {
+        if (id != usc.Id)
+        {
+            return BadRequest("Id invalid");
+        }
+        var result = await mediator.Send(usc);
+        return Ok(result);
     }
 }

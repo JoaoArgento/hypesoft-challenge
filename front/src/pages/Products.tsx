@@ -15,7 +15,7 @@ export default function Products()
     const remove = useDeleteProduct();
     const updateStock = useUpdateStock();
 
-    // const lowStockProducts = products.filter((p: any) => p.amountInStock < 10);
+    const lowStockProducts = products.filter((p: any) => p.amountInStock < 10);
 
     return(
         <div>
@@ -32,21 +32,21 @@ export default function Products()
             <ul>
                 {Array.isArray(products) && products.map((p: ProductDTO) =>
                 {
-                    return <li key = {p._id}>
+                    return <li key = {p.id}>
                         <div>
                             <strong>{p.name}</strong>
                             <div>Preço: R$ {p.price.toFixed(2)}</div>
                             <div>Estoque: {p.amountInStock} {p.amountInStock < 10 && <span>Baixo</span>}</div>
                         </div>
                         <div>
-                            <button onClick={() => remove.mutate(p._id)}>Excluir</button>
+                            <button onClick={() => remove.mutate(p.id)}>Excluir</button>
                             <button onClick={() => {
                                 const newStockAmount = Number(prompt("Novo estoque: ", String(p.amountInStock)));
                                 if (!Number.isNaN(newStockAmount))
                                 {
-                                    updateStock.mutate({id: p._id, amount: newStockAmount})
+                                    updateStock.mutate({id: p.id, amount: newStockAmount})
 
-                                }}}> Atualizar estoque</button>
+                                }}}>Atualizar estoque</button>
 
                         </div>
                     </li>
