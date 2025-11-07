@@ -52,14 +52,10 @@ public class ProductController : ControllerBase
         var result = await mediator.Send(new DeleteProductCommand(id));
         return result ? NoContent() : NotFound();
     }
-    [HttpPatch("{id}")]
+    [HttpPatch("{id}/stock")]
     public async Task<IActionResult> UpdateStockAsync(int id, [FromBody] UpdateStockCommand usc)
     {
-        if (id != usc.Id)
-        {
-            return BadRequest("Id invalid");
-        }
-        var result = await mediator.Send(usc);
+        var result = await mediator.Send(new UpdateStockCommand(id, usc.Amount));
         return Ok(result);
     }
 }
