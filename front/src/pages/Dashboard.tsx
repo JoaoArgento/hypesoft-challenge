@@ -7,7 +7,7 @@ import { useCategories } from "../hooks/useCategory";
 import type { ProductDTO } from "../types/productDTO";
 
 
-export const DashboardPage: React.FC = () => {
+export const Dashboard: React.FC = () => {
   const { data: products = [] } = useProducts();
   const { data: categories = [] } = useCategories();
 

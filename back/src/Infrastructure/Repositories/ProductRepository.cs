@@ -30,7 +30,7 @@ public class ProductRepository : IStorableRepository<Product>
             throw new NullReferenceException("Storable is null");
         }
 
-        await mongoDBContext.Storables.InsertOneAsync(dto);
+        await mongoDBContext.Products.InsertOneAsync(dto);
     }
 
     public async Task DeleteByIdAsync(int id)
@@ -39,13 +39,13 @@ public class ProductRepository : IStorableRepository<Product>
         {
             throw new ArgumentNullException("id is not valid");
         }
-        await mongoDBContext.Storables.DeleteOneAsync(product => product.Id == id);
+        await mongoDBContext.Products.DeleteOneAsync(product => product.Id == id);
 
     }
 
     public async Task<IEnumerable<Product>> GetAllAsync()
     {
-        return await mongoDBContext.Storables.Find(_ => true).ToListAsync();
+        return await mongoDBContext.Products.Find(_ => true).ToListAsync();
     }
 
     public async Task<Product> GetByIdAsync(int id)
@@ -54,7 +54,7 @@ public class ProductRepository : IStorableRepository<Product>
         {
             throw new ArgumentNullException("id is not valid");
         }
-        return await mongoDBContext.Storables.Find(storable => storable.Id == id).FirstOrDefaultAsync();
+        return await mongoDBContext.Products.Find(storable => storable.Id == id).FirstOrDefaultAsync();
     }
 
     public async Task UpdateAsync(Product storableParam)
@@ -63,7 +63,7 @@ public class ProductRepository : IStorableRepository<Product>
         {
             throw new NullReferenceException("Storable is null");
         }
-        await mongoDBContext.Storables.ReplaceOneAsync(storable => storable.Id == storableParam.Id, storableParam);
+        await mongoDBContext.Products.ReplaceOneAsync(storable => storable.Id == storableParam.Id, storableParam);
     }
 
     public async Task<int> GetNextIdAsync(string collectionName)

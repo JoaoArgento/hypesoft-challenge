@@ -54,6 +54,7 @@ public class MongoDBContext : DbContext
         });
     }
 
-    public IMongoCollection<Product> Storables => database.GetCollection<Product>(collectionName);
+    public IMongoCollection<Category> Categories => database.GetCollection<Category>("categories");
+    public IMongoCollection<Product> Products => database.GetCollection<Product>(collectionName);
     public IMongoDatabase MongoDatabase => database;
 }

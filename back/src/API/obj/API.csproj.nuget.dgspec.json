@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\João\\hypesoft-challenge\\back\\src\\API\\API.csproj": {}
+    "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\API\\API.csproj": {}
   },
   "projects": {
-    "C:\\Users\\João\\hypesoft-challenge\\back\\src\\API\\API.csproj": {
+    "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\API\\API.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\API\\API.csproj",
+        "projectUniqueName": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\API\\API.csproj",
         "projectName": "API",
-        "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\API\\API.csproj",
-        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\API\\obj\\",
+        "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\API\\API.csproj",
+        "packagesPath": "C:\\Users\\herei\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\API\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\herei\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -28,11 +28,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Application\\Application.csproj"
+              "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Application\\Application.csproj"
               },
-              "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -46,7 +46,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -96,21 +97,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Application\\Application.csproj": {
+    "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Application\\Application.csproj",
-        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Application\\obj\\",
+        "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Application\\Application.csproj",
+        "packagesPath": "C:\\Users\\herei\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\herei\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -124,8 +125,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj"
+              "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -139,7 +140,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -178,21 +180,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj": {
+    "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj",
-        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Domain\\obj\\",
+        "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj",
+        "packagesPath": "C:\\Users\\herei\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\herei\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -217,7 +219,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -238,21 +241,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj",
-        "packagesPath": "C:\\Users\\João\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Infrastructure\\obj\\",
+        "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Infrastructure\\Infrastructure.csproj",
+        "packagesPath": "C:\\Users\\herei\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\João\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\herei\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -266,11 +269,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Application\\Application.csproj": {
-                "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Application\\Application.csproj"
+              "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Application\\Application.csproj": {
+                "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Application\\Application.csproj"
               },
-              "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj": {
-                "projectPath": "C:\\Users\\João\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj"
+              "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\herei\\hypesoft-challenge\\back\\src\\Domain\\Domain.csproj"
               }
             }
           }
@@ -284,7 +287,8 @@
           "enableAudit": "true",
           "auditLevel": "low",
           "auditMode": "direct"
-        }
+        },
+        "SdkAnalysisLevel": "9.0.300"
       },
       "frameworks": {
         "net8.0": {
@@ -339,7 +343,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

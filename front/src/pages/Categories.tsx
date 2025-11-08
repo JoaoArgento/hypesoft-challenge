@@ -4,7 +4,7 @@ import { CategoryForm } from "../components/forms/CategoryForm"
 import { useCategories, useCreateCategory, usaDeleteCategory } from "../hooks/useCategory";
 import type { CategoryCreateDTO } from "../types/CategoryDTO";
 
-export const CategoriesPage: React.FC = () => {
+export const Categories: React.FC = () => {
   const { data: categories = []} = useCategories();
   const add = useCreateCategory();
   const remove = usaDeleteCategory()
