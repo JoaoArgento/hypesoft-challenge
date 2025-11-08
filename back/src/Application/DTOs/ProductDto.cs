@@ -4,17 +4,12 @@ namespace Application.DTOs;
 public class ProductDTO
 {
     public int Id { get; set; }
-    public string Name { get; set; }
-    public string Description { get; set; }
+    public string ? Name { get; set; }
+    public string ? Description { get; set; }
     public decimal Price { get;  set; }
-    public string Category { get; set; }
+    public string ? Category { get; set; }
     public int AmountInStock { get; set; }
 
-    public ProductDTO()
-    {
-
-    }
-    
     public ProductDTO(int id, string name, string description, decimal price, string category, int amountInStock)
     {
         this.Id = id;
@@ -26,5 +21,3 @@ public class ProductDTO
     }
 }
 
-
- //public sealed record ProductDTO(int ? Id, string Name, string  Description, decimal  Price, string  Category, int  AmountInStock);

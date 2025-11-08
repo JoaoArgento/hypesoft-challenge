@@ -1,5 +1,6 @@
 using Application.Commands;
 using Application.Queries;
+using Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
@@ -40,7 +41,7 @@ public class CategoryController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
-        var result = await mediator.Send(new DeleteStorableCommand(id));
+        var result = await mediator.Send(new DeleteStorableCommand<Category>(id));
         return Ok(result);
     }
 

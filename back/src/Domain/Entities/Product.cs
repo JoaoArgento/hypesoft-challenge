@@ -2,12 +2,6 @@ namespace Domain.Entities;
 
 public class Product
 {
-    public enum ProductCategory
-    {
-        A,
-        B,
-        C
-    }
     public string Name { get; private set; }
     public string Description { get; private set; }
     public decimal Price { get; private set; }
@@ -18,29 +12,19 @@ public class Product
     public Product(int id, string name, string description, decimal price, string category, int amountInStock)
     {
         this.Id = id;
-        this.Name = name;
-        this.Description = description;
-        this.Price = price;
-        this.Category = category;
-        this.AmountInStock = amountInStock;
+        UpdateInfo(name, description, price, category, amountInStock);
     }
     public void UpdateStock(int amount)
     {
         this.AmountInStock = amount;
     }
 
-    // public void RaiseStock(int amount)
-    // {
-    //     AmountInStock += amount;
-    // }
-
-    // public void RemoveStock(int amount)
-    // {
-    //     AmountInStock -= amount;
-
-    //     if (AmountInStock < 0)
-    //     {
-    //         AmountInStock = 0;
-    //     }
-    // }
+    public void UpdateInfo(string name, string description, decimal price, string category, int amountInStock)
+    {
+        this.Name = name;
+        this.Description = description;
+        this.Price = price;
+        this.Category = category;
+        this.AmountInStock = amountInStock;
+    }
 } 

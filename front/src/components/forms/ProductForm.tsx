@@ -7,6 +7,7 @@ import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { Label } from "../ui/label";
+import type { CategoryDTO } from "../../types/CategoryDTO";
 
 const schema = zod.object({
   name: zod.string().min(1, "O nome é obrigatório"),
@@ -19,10 +20,11 @@ const schema = zod.object({
 type FormData = zod.infer<typeof schema>;
 
 export const ProductForm: React.FC<{
+  categories : CategoryDTO[],
   defaultValues: Partial<FormData>;
   onSubmit: (v: FormData) => void;
   submitLabel: string;
-}> = ({ defaultValues, onSubmit, submitLabel = "Create" }) => {
+}> = ({ categories, defaultValues, onSubmit, submitLabel = "Create" }) => {
   const {
     register,
     handleSubmit,
@@ -36,7 +38,7 @@ export const ProductForm: React.FC<{
     <Card className="w-full max-w-lg mx-auto border border-border bg-background shadow-md">
       <CardHeader>
         <CardTitle className="text-xl font-semibold text-foreground">
-          {submitLabel === "Create" ? "Novo Produto" : "Editar Produto"}
+          {submitLabel === "Create" ? "New product" : "Edit product"}
         </CardTitle>
       </CardHeader>
 
@@ -50,7 +52,7 @@ export const ProductForm: React.FC<{
             <Input
               id="name"
               {...register("name")}
-              placeholder="Digite o nome do produto"
+              placeholder="Type a product name"
             />
             {errors.name && (
               <p className="text-sm text-red-500 mt-1">{errors.name.message}</p>
@@ -62,22 +64,30 @@ export const ProductForm: React.FC<{
             <Textarea
               id="description"
               {...register("description")}
-              placeholder="Digite a descrição do produto"
+              placeholder="Type a product description"
             />
           </div>
 
           <div>
-            <Label htmlFor="category">Category</Label>
-            <Input
-              id="category"
-              {...register("category")}
-              placeholder="Digite a categoria"
-            />
-            {errors.category && (
-              <p className="text-sm text-red-500 mt-1">
-                {errors.category.message}
-              </p>
-            )}
+         <Label htmlFor="category">Category</Label>
+        <select
+          id="category"
+          {...register("category", { required: "Select a category" })}
+          className="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
+          defaultValue=""
+        >
+          {categories.map((category) => (
+            <option key={category.id} value={category.name}>
+              {category.name}
+            </option>
+          ))}
+        </select>
+
+  {errors.category && (
+    <p className="text-sm text-red-500 mt-1">
+      {errors.category.message}
+    </p>
+  )}
           </div>
 
           <div className="grid grid-cols-2 gap-4">
