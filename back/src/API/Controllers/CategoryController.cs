@@ -1,3 +1,4 @@
+using Application.Commands;
 using Application.Queries;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -20,4 +21,28 @@ public class CategoryController : ControllerBase
         var result = await mediator.Send(new GetAllCategoriesQuery());
         return Ok(result);
     }
+
+    [HttpGet("{id}")]
+    public async Task<IActionResult> GetByIdAsync(int id)
+    {
+        var result = await mediator.Send(new GetAllCategoriesQuery());
+        return Ok(result);
+    }
+
+
+    [HttpPost]
+    public async Task<IActionResult> AddAsync([FromBody] AddCategoryCommand addCategoryCommand)
+    {
+        var result = await mediator.Send(addCategoryCommand);
+        return Ok(result);
+    }
+
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteAsync(int id)
+    {
+        var result = await mediator.Send(new DeleteStorableCommand(id));
+        return Ok(result);
+    }
+
+    
 }

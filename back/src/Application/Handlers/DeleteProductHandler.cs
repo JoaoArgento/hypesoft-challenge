@@ -1,33 +1,11 @@
-using MediatR;
-using Domain.Repositories;
-using Application.Commands;
 using Domain.Entities;
-using Application.DTOs;
+using Domain.Repositories;
 
-namespace Application.Handlers
+namespace Application.Handlers;
+
+public class DeleteProductHandler : DeleteStorableHandler<Product>
 {
-    public class DeleteProductHandler : IRequestHandler<DeleteProductCommand, bool>
+    public DeleteProductHandler(IStorableRepository<Product> storableRepository) : base(storableRepository)
     {
-        private IStorableRepository<Product> storableRepository;
-
-        public DeleteProductHandler(IStorableRepository<Product> storableRepository)
-        {
-
-            this.storableRepository = storableRepository;
-        }
-
-
-        public async Task<bool> Handle(DeleteProductCommand request, CancellationToken cancellationToken)
-        {
-            Product targetProduct = await storableRepository.GetByIdAsync(request.ProductId);
-
-            if (targetProduct == null)
-            {
-                return false;
-            }
-            await storableRepository.DeleteByIdAsync(request.ProductId);
-
-            return true;
-        }
     }
 }

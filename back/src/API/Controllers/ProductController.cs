@@ -49,7 +49,7 @@ public class ProductController : ControllerBase
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAsync(int id)
     {
-        var result = await mediator.Send(new DeleteProductCommand(id));
+        var result = await mediator.Send(new DeleteStorableCommand(id));
         return result ? NoContent() : NotFound();
     }
     [HttpPatch("{id}/stock")]

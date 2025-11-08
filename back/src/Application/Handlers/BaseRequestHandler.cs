@@ -5,7 +5,7 @@ using MediatR;
 namespace Application.Handlers;
 
 
-public abstract class BaseRequestHandler<T1, T2, TRepository> : IRequestHandler<T1, T2> where T1 : IRequest<T2>
+public abstract class BaseRequestHandler<TCommand, TRequest, TRepository> : IRequestHandler<TCommand, TRequest> where TCommand : IRequest<TRequest>
 {
     protected IStorableRepository<TRepository> storableRepository;
     protected IMapper mapper;
@@ -16,5 +16,5 @@ public abstract class BaseRequestHandler<T1, T2, TRepository> : IRequestHandler<
         this.mapper = mapper;
     }
     
-    public abstract Task<T2> Handle(T1 request, CancellationToken cancellationToken);
+    public abstract Task<TRequest> Handle(TCommand request, CancellationToken cancellationToken);
 }
