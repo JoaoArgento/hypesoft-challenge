@@ -8,16 +8,8 @@ namespace Infrastructure.Data;
 public class MongoDBContext : DbContext
 {
     private IMongoDatabase database;
-    private string collectionName;
-    public MongoDBContext(string collectionName, IConfiguration configuration)
+    public MongoDBContext(IConfiguration configuration)
     {
-
-        if (string.IsNullOrEmpty(collectionName))
-        {
-            throw new ArgumentNullException(nameof(collectionName), "Is null or empty");
-        }
-
-        this.collectionName = collectionName;
 
         string? connection = Environment.GetEnvironmentVariable("MONGO_CONNECTION_STRING");
 
@@ -55,6 +47,6 @@ public class MongoDBContext : DbContext
     }
 
     public IMongoCollection<Category> Categories => database.GetCollection<Category>("categories");
-    public IMongoCollection<Product> Products => database.GetCollection<Product>(collectionName);
+    public IMongoCollection<Product> Products => database.GetCollection<Product>("products");
     public IMongoDatabase MongoDatabase => database;
 }

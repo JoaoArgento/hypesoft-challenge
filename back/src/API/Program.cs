@@ -12,10 +12,6 @@ using Application.Queries;
 
 
 var builder = WebApplication.CreateBuilder(args);
-
-System.Net.ServicePointManager.SecurityProtocol = 
-    System.Net.SecurityProtocolType.Tls12 | 
-    System.Net.SecurityProtocolType.Tls13;
 DotNetEnv.Env.Load("./EnvironmentVariables.env");
 
 

@@ -8,17 +8,10 @@ using Serilog;
 
 namespace Application.Handlers
 {
-
-    public class AddProductHandler : IRequestHandler<AddProductCommand, ProductDTO>
+    public class AddProductHandler : BaseRequestHandler<AddProductCommand, ProductDTO, Product>
     {
-        private readonly IStorableRepository<Product> storableRepository;
-        private readonly IMapper mapper;
-        public AddProductHandler(IStorableRepository<Product> storableRepository, IMapper mapper)
-        {
-            this.storableRepository = storableRepository;
-            this.mapper = mapper;
-        }
-        public async Task<ProductDTO> Handle(AddProductCommand request, CancellationToken cancellationToken)
+        public AddProductHandler(IStorableRepository<Product> storableRepository, IMapper mapper) : base(storableRepository, mapper) { }
+        public async override Task<ProductDTO> Handle(AddProductCommand request, CancellationToken cancellationToken)
         {
             int productId = await storableRepository.GetNextIdAsync("products");
             Product product = new Product(productId, request.Name, request.Description, request.Price, request.Category, request.AmountInStock);

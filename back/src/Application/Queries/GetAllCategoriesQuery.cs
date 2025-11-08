@@ -3,4 +3,4 @@ using MediatR;
 
 namespace Application.Queries;
 
-public record GetAllCategoriesQuery : IRequest<CategoryDTO>;
+public record GetAllCategoriesQuery : IRequest<IEnumerable<CategoryDTO>>;

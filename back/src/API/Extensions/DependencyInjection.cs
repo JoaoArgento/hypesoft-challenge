@@ -13,10 +13,11 @@ public static class DependencyInjection
         serviceCollection.AddSingleton(typeof(MongoDBContext),
         sp =>
         {
-            return new MongoDBContext("products", configuration);
+            return new MongoDBContext(configuration);
         });
 
         serviceCollection.AddScoped<IStorableRepository<Product>, ProductRepository>();
+        serviceCollection.AddScoped<IStorableRepository<Category>, CategoryRepository>();
 
         return serviceCollection;
     }

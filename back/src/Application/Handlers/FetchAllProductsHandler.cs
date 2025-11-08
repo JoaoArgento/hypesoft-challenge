@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using Application.DTOs;
 using Application.Queries;
 using AutoMapper;
@@ -7,18 +8,11 @@ using MediatR;
 
 namespace Application.Handlers;
 
-public class FetchAllProductsHandler : IRequestHandler<FetchAllProducts, IEnumerable<ProductDTO>>
+public class FetchAllProductsHandler : BaseRequestHandler<FetchAllProducts, IEnumerable<ProductDTO>, Product>
 {
-    private readonly IStorableRepository<Product> storableRepository;
-    private readonly IMapper mapper;
+    public FetchAllProductsHandler(IStorableRepository<Product> storableRepository, IMapper mapper) : base(storableRepository, mapper){}
 
-    public FetchAllProductsHandler(IStorableRepository<Product> storableRepository, IMapper mapper)
-    {
-        this.mapper = mapper;
-        this.storableRepository = storableRepository;
-    }
-
-    public async Task<IEnumerable<ProductDTO>> Handle(FetchAllProducts request, CancellationToken cancellationToken)
+    public async override Task<IEnumerable<ProductDTO>> Handle(FetchAllProducts request, CancellationToken cancellationToken)
     {
         var products =  await storableRepository.GetAllAsync();
         return mapper.Map<IEnumerable<ProductDTO>>(products);
