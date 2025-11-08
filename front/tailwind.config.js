@@ -4,7 +4,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors:
+      {
+        primary: "#6366f1",
+        secondary: "#f3f4f6",
+      },
+      borderRadius:
+      {
+        xl: "1rem",
+      }
+    },
   },
   plugins: [],
 }

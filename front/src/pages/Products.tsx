@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import { useProducts, useCreateProduct, useDeleteProduct, useUpdateProduct, useUpdateStock} from "../hooks/useProducts";
 import { ProductForm } from "../components/forms/ProductForm";
 // import { useQuery } from "@tanstack/react-query";
-import type { ProductDTO } from "../types/product";
+import type { ProductDTO } from "../types/productDTO";
 
 
 

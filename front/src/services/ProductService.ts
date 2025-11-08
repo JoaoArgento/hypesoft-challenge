@@ -1,5 +1,5 @@
 import { API } from "./APIClient";
-import type { ProductCreateDTO, ProductDTO } from "../types/product";
+import type { ProductCreateDTO, ProductDTO } from "../types/productDTO";
 
 export const ProductService = {
     productList: async(params?: {search?:string; category?: string}) =>
