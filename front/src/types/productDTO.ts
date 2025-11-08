@@ -4,7 +4,7 @@ export type ProductDTO =
     name: string;
     description: string;
     price: number;
-    category: number;
+    category: string;
     amountInStock: number;
 };
 
