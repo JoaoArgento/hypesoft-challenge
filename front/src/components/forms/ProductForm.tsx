@@ -38,7 +38,7 @@ export const ProductForm: React.FC<{
     <Card className="w-full max-w-lg mx-auto border border-border bg-background shadow-md">
       <CardHeader>
         <CardTitle className="text-xl font-semibold text-foreground">
-          {submitLabel === "Create" ? "New product" : "Edit product"}
+          {submitLabel === "Create" ? "New product" : "Editing"}
         </CardTitle>
       </CardHeader>
 
@@ -74,8 +74,8 @@ export const ProductForm: React.FC<{
           id="category"
           {...register("category", { required: "Select a category" })}
           className="w-full border border-gray-300 rounded-lg p-2 mt-1 focus:outline-none focus:ring-2 focus:ring-blue-500"
-          defaultValue=""
         >
+          <option key = "" value = "">Select a category</option>
           {categories.map((category) => (
             <option key={category.id} value={category.name}>
               {category.name}

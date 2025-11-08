@@ -4,6 +4,7 @@ using Application.DTOs;
 using Domain.Repositories;
 using Domain.Entities;
 using AutoMapper;
+using Serilog;
 
 namespace Application.Handlers;
 

@@ -6,7 +6,8 @@ import { useProducts, useCreateProduct, useUpdateProduct, useDeleteProduct } fro
 import { useCategories } from "../hooks/useCategory";
 import type { ProductDTO } from "../types/productDTO";
 
-export const Products: React.FC = () => {
+export const Products: React.FC = () => 
+{
   const { data: products = []} = useProducts();
   const { data: categories = [] } = useCategories();
   const addProduct = useCreateProduct();
@@ -17,27 +18,38 @@ export const Products: React.FC = () => {
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
   const [editingProduct, setEditingProduct] = useState<ProductDTO | null>(null);
 
-  const filtered = products
+  const filteredProducts = products
     .filter((product) => product.name.toLowerCase().includes(search.toLowerCase()))
     .filter((product) => (categoryFilter ? product.category === categoryFilter : true));
 
   const handleAdd = (p: ProductDTO) => addProduct.mutate(p);
   const handleUpdate = (p: ProductDTO) => updateProduct.mutate({ id: p.id, data: p });
-  const handleDelete = (id: number) => removeProduct.mutate(id);
+  const handleDelete = (id: number) => 
+  {
+    removeProduct.mutate(id)
+    setEditingProduct(null);
+  };
 
   const handleAdjustStock = (id: number, delta: number) => 
   {
     const product = products.find((x) => x.id === id);
     if (!product) return;
-    const newStockAmount = { ...product, amountInStock: Math.max(0, product.amountInStock + delta) };
-    updateProduct.mutate({ id, data: newStockAmount });
+    const newProduct = { ...product, amountInStock: Math.max(0, product.amountInStock + delta) };
+    if (newProduct.amountInStock > 0)
+    {
+      updateProduct.mutate({ id, data: newProduct });
+    }
+    else
+    {
+      removeProduct.mutate(newProduct.id);
+    }
   };
 
   return (
     <AppLayout>
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-4">
-          <h2 className="text-xl font-semibold mb-3">{editingProduct ? "Edit product" : "New product"}</h2>
+          {/* <h2 className="text-xl font-semibold mb-3">{editingProduct ? `Editing - ${editingProduct.name}` : "New product"}</h2> */}
           <ProductForm
             categories={categories}
             defaultValues={{name: "", price: 0, category:""}}
@@ -77,7 +89,7 @@ export const Products: React.FC = () => {
               value={categoryFilter ?? ""}
               onChange={(e) => setCategoryFilter(e.target.value || null)}
             >
-              <option value="">Todas categorias</option>
+              <option value="">All Categories</option>
               {categories.map((category) => (
                 <option key={category.id} value={category.name}>
                   {category.name}
@@ -87,7 +99,7 @@ export const Products: React.FC = () => {
           </div>
 
           <ProductTable
-            products={filtered}
+            products={filteredProducts}
             onEdit={(p) => setEditingProduct(p)}
             onDelete={handleDelete}
             onAdjustStock={handleAdjustStock}

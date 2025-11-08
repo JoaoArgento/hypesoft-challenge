@@ -55,7 +55,7 @@ public class ProductController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IActionResult> UpdateAsync(int id, [FromBody] UpdateProductCommand command)
     {
-        var result = await mediator.Send(new UpdateProductCommand(id, command.CategoryId, command.Name, command.Description, command.Price, command.Category, command.AmountInStock));
+        var result = await mediator.Send(new UpdateProductCommand(id, command.Name, command.Description, command.Price, command.Category, command.AmountInStock));
         return Ok(result);
     }
     [HttpPatch("{id}/stock")]
