@@ -5,6 +5,7 @@ import { ChartByCategory } from "../components/charts/ChartByCategory";
 import { useProducts } from "../hooks/useProducts";
 import { useCategories } from "../hooks/useCategory";
 import type { ProductDTO } from "../types/productDTO";
+import { formatCurrency } from "../lib/utils";
 
 
 export const Dashboard: React.FC = () => {
@@ -18,19 +19,18 @@ export const Dashboard: React.FC = () => {
     <AppLayout>
       <div className="grid grid-cols-12 gap-6">
         <div className="col-span-12 grid grid-cols-3 gap-6">
-          <DashboardCard title="Total de produtos" value={products.length} />
-          {/* <DashboardCard title="Valor total do estoque" value={formatCurrency(totalValue)} /> */}
-          <DashboardCard title="Produtos com estoque baixo" value={lowStock.length} />
+          <DashboardCard title="Total products amount" value={products.length} />
+          <DashboardCard title="Total stock value" value={formatCurrency(totalValue)} />
+          <DashboardCard title="Products with low stock" value={lowStock.length} />
         </div>
 
         <div className="col-span-8 card">
-          <h3 className="font-semibold mb-3">Sales Insight</h3>
-          {/* small placeholder chart - reuse ChartByCategory but you can use a multiline chart */}
+          <h3 className="font-semibold mb-3">Products</h3>
           <ChartByCategory products={products} categories={categories} />
-        </div>
+        </div> 
 
         <div className="col-span-4 card">
-          <h3 className="font-semibold mb-3">Produtos com estoque baixo</h3>
+          <h3 className="font-semibold mb-3">Products with low stock</h3>
           <ul className="space-y-2">
             {lowStock.map((p: ProductDTO) => (
               <li key={p.id} className="flex justify-between">
@@ -38,13 +38,13 @@ export const Dashboard: React.FC = () => {
                 <div className="text-red-600">{p.amountInStock}</div>
               </li>
             ))}
-            {lowStock.length === 0 && <li className="text-slate-500">Nenhum produto com estoque baixo</li>}
+            {lowStock.length === 0 && <li className="text-slate-500">No low stock product</li>}
           </ul>
         </div>
 
         <div className="col-span-12">
           <div className="card">
-            <h3 className="font-semibold mb-3">Produtos por categoria</h3>
+            <h3 className="font-semibold mb-3">Products by category</h3>
             <ChartByCategory products={products} categories={categories} />
           </div>
         </div>

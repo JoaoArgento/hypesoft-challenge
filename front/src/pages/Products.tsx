@@ -2,13 +2,17 @@ import React, { useState } from "react";
 import { AppLayout } from "../components/layouts/AppLayout";
 import { ProductForm } from "../components/forms/ProductForm";
 import { ProductTable } from "../components/tables/ProductTable";
-import { useProducts, useCreateProduct, useUpdateProduct, useDeleteProduct } from  "../hooks/useProducts";
+import {
+  useProducts,
+  useCreateProduct,
+  useUpdateProduct,
+  useDeleteProduct,
+} from "../hooks/useProducts";
 import { useCategories } from "../hooks/useCategory";
 import type { ProductDTO } from "../types/productDTO";
 
-export const Products: React.FC = () => 
-{
-  const { data: products = []} = useProducts();
+export const Products: React.FC = () => {
+  const { data: products = [] } = useProducts();
   const { data: categories = [] } = useCategories();
   const addProduct = useCreateProduct();
   const removeProduct = useDeleteProduct();
@@ -24,68 +28,64 @@ export const Products: React.FC = () =>
 
   const handleAdd = (p: ProductDTO) => addProduct.mutate(p);
   const handleUpdate = (p: ProductDTO) => updateProduct.mutate({ id: p.id, data: p });
-  const handleDelete = (id: number) => 
-  {
-    removeProduct.mutate(id)
+  const handleDelete = (id: number) => {
+    removeProduct.mutate(id);
     setEditingProduct(null);
   };
 
-  const handleAdjustStock = (id: number, delta: number) => 
-  {
+  const handleAdjustStock = (id: number, delta: number) => {
     const product = products.find((x) => x.id === id);
     if (!product) return;
     const newProduct = { ...product, amountInStock: Math.max(0, product.amountInStock + delta) };
-    if (newProduct.amountInStock > 0)
-    {
+    if (newProduct.amountInStock > 0) {
       updateProduct.mutate({ id, data: newProduct });
-    }
-    else
-    {
+    } else {
       removeProduct.mutate(newProduct.id);
     }
   };
 
   return (
     <AppLayout>
-      <div className="grid grid-cols-12 gap-6">
-        <div className="col-span-4">
-          {/* <h2 className="text-xl font-semibold mb-3">{editingProduct ? `Editing - ${editingProduct.name}` : "New product"}</h2> */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+        <div className="lg:col-span-4 bg-white dark:bg-gray-800 rounded-2xl shadow p-4">
+          <h2 className="text-lg font-semibold mb-3 text-gray-700 dark:text-gray-200">
+            {editingProduct ? `Editing: ${editingProduct.name}` : "New product"}
+          </h2>
+
           <ProductForm
             categories={categories}
-            defaultValues={{name: "", price: 0, category:""}}
+            defaultValues={{ name: "", price: 0, category: "" }}
             onSubmit={(p) => {
-                const product : ProductDTO = {
-                    id: editingProduct?.id?? 0,
-                    name: p.name,
-                    description: p.description,
-                    price: p.price,
-                    category: p.category,
-                    amountInStock: p.amountInStock
-                }
-                if (editingProduct) 
-                {
-                    handleUpdate(product);
-                    setEditingProduct(null);
-                }
-                else 
-                {
-                    handleAdd(product)
-                }    
+              const product: ProductDTO = {
+                id: editingProduct?.id ?? 0,
+                name: p.name,
+                description: p.description,
+                price: p.price,
+                category: p.category,
+                amountInStock: p.amountInStock,
+              };
+              if (editingProduct) {
+                handleUpdate(product);
+                setEditingProduct(null);
+              } else {
+                handleAdd(product);
+              }
             }}
             submitLabel={editingProduct ? "Update" : "Create"}
           />
         </div>
 
-        <div className="col-span-8">
-          <div className="flex gap-2 mb-4">
+        <div className="lg:col-span-8 bg-white dark:bg-gray-800 rounded-2xl shadow p-4 flex flex-col">
+          <div className="flex flex-col sm:flex-row gap-2 mb-4">
             <input
-              placeholder="Buscar por nome..."
+              placeholder="Search by name"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="border p-2 rounded flex-1"
+              className="border border-gray-300 dark:border-gray-700 p-2 rounded flex-1 text-sm bg-gray-50 dark:bg-gray-900 dark:text-gray-100"
             />
+
             <select
-              className="border p-2 rounded"
+              className="border border-gray-300 dark:border-gray-700 p-2 rounded text-sm bg-gray-50 dark:bg-gray-900 dark:text-gray-100"
               value={categoryFilter ?? ""}
               onChange={(e) => setCategoryFilter(e.target.value || null)}
             >
@@ -98,12 +98,14 @@ export const Products: React.FC = () =>
             </select>
           </div>
 
-          <ProductTable
-            products={filteredProducts}
-            onEdit={(p) => setEditingProduct(p)}
-            onDelete={handleDelete}
-            onAdjustStock={handleAdjustStock}
-          />
+          <div className="overflow-x-auto">
+            <ProductTable
+              products={filteredProducts}
+              onEdit={(p) => setEditingProduct(p)}
+              onDelete={handleDelete}
+              onAdjustStock={handleAdjustStock}
+            />
+          </div>
         </div>
       </div>
     </AppLayout>

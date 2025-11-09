@@ -10,10 +10,11 @@ using Application.Validators;
 using Application.Commands;
 using Application.Queries;
 
-
 var builder = WebApplication.CreateBuilder(args);
+
 DotNetEnv.Env.Load("./EnvironmentVariables.env");
 
+builder.WebHost.UseUrls("http://0.0.0.0:5039");
 
 builder.Host.UseSerilog((context, logger) =>
 {
