@@ -6,7 +6,7 @@ import type { CategoryDTO } from "../../types/CategoryDTO";
 
 const schema = zod.object(
 {
-    name: zod.string().min(1, "Nome obrigatório") 
+    name: zod.string().min(1, "Name is required") 
 });
 
 type CategoryForm = zod.infer<typeof schema>;

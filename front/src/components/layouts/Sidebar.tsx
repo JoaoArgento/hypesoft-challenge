@@ -8,10 +8,10 @@ export const Sidebar: React.FC = () => {
   return (
     <aside className="w-72 fixed left-0 top-0 bottom-0 p-6 bg-white shadow-md">
       <div className="mb-8">
-        <div className="text-2xl font-bold text-indigo-600">ShopSense</div>
+        <div className="text-2xl font-bold text-indigo-600">ProductManagement</div>
       </div>
       <nav className="flex flex-col gap-2">
-        <NavLink to="/" className={linkClass} end>Dashboard</NavLink>
+        <NavLink to="/dashboard" className={linkClass} end>Dashboard</NavLink>
         <NavLink to="/products" className={linkClass}>Products</NavLink>
         <NavLink to="/categories" className={linkClass}>Categories</NavLink>
       </nav>

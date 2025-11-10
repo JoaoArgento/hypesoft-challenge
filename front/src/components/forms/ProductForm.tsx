@@ -10,11 +10,11 @@ import { Label } from "../ui/label";
 import type { CategoryDTO } from "../../types/CategoryDTO";
 
 const schema = zod.object({
-  name: zod.string().min(1, "O nome é obrigatório"),
+  name: zod.string().min(1, "Name is required"),
   description: zod.string().optional(),
-  price: zod.number().positive("Preço inválido"),
-  category: zod.string().min(1, "Categoria é obrigatória"),
-  amountInStock: zod.number().int().nonnegative("Quantidade inválida"),
+  price: zod.number().positive("Invalid price"),
+  category: zod.string().min(1, "Category is required"),
+  amountInStock: zod.number().int().nonnegative("Invalid amount"),
 });
 
 type FormData = zod.infer<typeof schema>;

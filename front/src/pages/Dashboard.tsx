@@ -8,7 +8,8 @@ import type { ProductDTO } from "../types/productDTO";
 import { formatCurrency } from "../lib/utils";
 
 
-export const Dashboard: React.FC = () => {
+export const Dashboard: React.FC = () => 
+{
   const { data: products = [] } = useProducts();
   const { data: categories = [] } = useCategories();
 

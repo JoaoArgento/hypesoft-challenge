@@ -1,6 +1,16 @@
+import { useKeycloak } from "@react-keycloak/web";
+
 import React from "react";
 
-export const Topbar: React.FC = () => {
+export const Topbar: React.FC = () => 
+{
+  const {keycloak} = useKeycloak();
+
+   const username =
+    keycloak?.tokenParsed?.preferred_username || 
+    keycloak?.tokenParsed?.name ||               
+    "Usuário";
+
   return (
     <header className="h-16 flex items-center justify-between px-6">
       <div className="flex items-center gap-4">
@@ -8,7 +18,7 @@ export const Topbar: React.FC = () => {
         <div className="rounded-full bg-white px-3 py-2 shadow-sm">Search (⌘S)</div>
       </div>
       <div className="flex items-center gap-4">
-        <div className="text-sm">João Pedro Argento </div>
+        <div className="text-sm">{username}</div>
       </div>
     </header>
   );

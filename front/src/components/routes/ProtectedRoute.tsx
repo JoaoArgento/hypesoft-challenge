@@ -1,5 +1,4 @@
 import React, { type JSX } from "react";
-import {useKeycloak} from "@react-keycloak/web"
 
 
 interface Props
@@ -9,12 +8,11 @@ interface Props
 
 export const ProtectedRoute : React.FC<Props> = ({children}) =>
 {
-    const {keycloak} = useKeycloak();
 
-    if (!keycloak.authenticated)
+    if (localStorage.getItem("access_token"))
     {
-        keycloak.login()
-        return null;
+        return children;
     }
-    return children;
+    return <div>Sem acesso</div>
+    
 };

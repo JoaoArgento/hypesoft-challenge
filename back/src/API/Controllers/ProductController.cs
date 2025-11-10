@@ -3,6 +3,7 @@ using Application.Queries;
 using Domain.Entities;
 using Domain.Repositories;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MongoDB.Driver;
 using Serilog;

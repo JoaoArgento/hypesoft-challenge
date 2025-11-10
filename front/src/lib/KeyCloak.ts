@@ -1,7 +1,7 @@
 import Keycloak from "keycloak-js";
 
 export const authClient = new Keycloak({
-        url: "http://localhost:8080",
+        url: "http://localhost:8080/auth",
         realm: "ProductManagement",
         clientId: "user",
 });
